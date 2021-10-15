@@ -24,11 +24,11 @@ class App extends Component {
 
     if (direction === 'left') {
       await axios.delete(
-        `https://shamwela-mongodb-server.herokuapp.com/listings/delete/${listingId}`
+        `https://shamwela-listinder-server.herokuapp.com/listings/delete/${listingId}`
       )
     } else {
       await axios.post(
-        'https://shamwela-mongodb-server.herokuapp.com/listings/recordSwipe',
+        'https://shamwela-listinder-server.herokuapp.com/listings/recordSwipe',
         {
           id: listingId,
           session_id: sessionId,
@@ -44,7 +44,7 @@ class App extends Component {
     })
 
     await axios.post(
-      'https://shamwela-mongodb-server.herokuapp.com/listings/updateLike',
+      'https://shamwela-listinder-server.herokuapp.com/listings/updateLike',
       {
         id: listingId,
       }
@@ -59,7 +59,7 @@ class App extends Component {
 
   async componentWillMount() {
     const response = await axios.get(
-      `https://shamwela-mongodb-server.herokuapp.com/listings`
+      `https://shamwela-listinder-server.herokuapp.com/listings`
     )
     const json = await response.data
     this.setState({ data: json })
